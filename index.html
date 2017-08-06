@@ -7,10 +7,15 @@
 
     <!-- Reset file when initially loading page -->
     <link rel="stylesheet" href="assets/css/reset.css">
+    
+    <!-- calling bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
 
     <!-- Calling CSS file from this location -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
+
     <!-- Pulling Firebase library from this location -->
     <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 </head>
@@ -21,15 +26,17 @@
             <h1 class="nav-header">Train Scheduler</h1>
             <p>Admin Login</p>
             <table>
-                <tr><input id="userName" type="text"></tr>
-                <tr><input id="pass" type="text"></tr>
-                <tr><button id="loginBtn">Login</button></tr>
+                <tr><input id="username" type="text" required=""></tr>
+                <tr><input id="pass" type="password" required=""></tr>
+                <tr><button class="btn" id="login-btn">Login</button></tr>
+                <tr><button class="btn" id="create-admin-btn">Create Admin</button></tr>
+                <tr><button class="btn" id="logout-btn">Logout</button></tr>
             </table>
         </nav>
 
-        <div id="trainDisplay">
+        <div id="train-display">
             <header class="content-header">Current Train Schedule</header>
-            <table id="trainTable">
+            <table class="table-striped" id="train-table">
                 <tr>
                     <th>Train Name</th>
                     <th>Destination</th>
@@ -41,22 +48,41 @@
         </div>
 
         <div id="AdminInput">
-            <header class="content-header">Add Train</header>
-            <form class="userInput">
-                <label>Train name</label>
-                <input type="text" id="trainNameInput">
+            <header class="content-header"><h1>Add Train</h1></header>
+                <table class="table-striped">
+                    <tr class="pull-left table-bordered">
+                        <label>Train name</label><br>
+                        <input type="text" id="train-name-input" required="">
+                    </tr>
 
-                <label>Destination</label>
-                <input type="text" id="destinationInput">
+                    <br>
+                    
+                    <tr class="pull-left table-bordered">
+                        <label>Destination</label><br>
+                        <input type="text" id="destination-input" required="">
+                    </tr>
 
-                <label>First Train Time (HH:mm - military time)</label>
-                <input type="text" id="firstTrainTimeInput">
+                    <br>
 
-                <label>Frequency (min)</label>
-                <input type="text" id="frequencyInput">
+                    <tr class="pull-left table-bordered">
+                        <label>First Train Time (HH:mm - military time)</label><br>
+                        <input type="text" id="first-train-time-input" required="">
+                    </tr>
 
-                <input type="submit" id="submitBtn" onclick="return false">
-            </form>
+                    <br>
+
+                    <tr class="pull-left table-bordered">
+                        <label>Frequency (min)</label><br>
+                        <input type="text" id="frequency-input" required="">
+                    </tr>
+
+                    <br>
+
+                    <tr class="pull-left table-bordered">
+                        <input type="submit" id="submit-btn" onclick="return false">
+                    </tr>
+
+                </table>
         </div>
 
         <!-- Moment.JS file location -->
